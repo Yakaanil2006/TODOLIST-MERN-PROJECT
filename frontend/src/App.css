@@ -1,0 +1,94 @@
+/* App.css */
+
+/* General body styles */
+body {
+  font-family: Arial, sans-serif;
+  background: "linear-gradient(135deg, #141e30, #243b55)";
+  padding: 20px;
+  margin: 0;
+}
+
+/* App container */
+.App {
+  text-align: center;
+}
+
+/* Container for Localdb component */
+div {
+  max-width: 400px;
+  margin: 20px auto;
+  background: "linear-gradient(135deg, #141e30, #243b55)";
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* Headings */
+h2, h3 {
+  color: #333;
+}
+
+/* Form styling */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+input {
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+button {
+  padding: 8px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+/* User list */
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  background-color: #f1f1f1;
+  margin-bottom: 8px;
+  padding: 10px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+li button {
+  margin-left: 5px;
+}
+
+li button:first-child {
+  background-color: #28a745; /* Edit button */
+}
+
+li button:first-child:hover {
+  background-color: #218838;
+}
+
+li button:last-child {
+  background-color: #dc3545; /* Delete button */
+}
+
+li button:last-child:hover {
+  background-color: #c82333;
+}
