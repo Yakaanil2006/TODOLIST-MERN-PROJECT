@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from "react";
 
+// Use the environment variable for the API URL
+const apiUrl = process.env.REACT_APP_API_URL;
+
 export default function Localdb() {
   const [task, setTask] = useState({ title: "", time: "", date: "", category: "", completed: false });
   const [tasks, setTasks] = useState([]);
@@ -11,7 +14,7 @@ export default function Localdb() {
   useEffect(() => {
     const fetchTasks = async () => {
       try {
-        const res = await fetch("http://localhost:8080/tasks");
+        const res = await fetch(`${apiUrl}/tasks`); // Updated
         const data = await res.json();
         setTasks(Array.isArray(data) ? data : []);
       } catch (err) {
@@ -28,7 +31,7 @@ export default function Localdb() {
 
     try {
       if (editId) {
-        const updated = await fetch(`http://localhost:8080/tasks/${editId}`, {
+        const updated = await fetch(`${apiUrl}/tasks/${editId}`, { // Updated
           method: "PUT",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(task),
@@ -36,7 +39,7 @@ export default function Localdb() {
 
         setTasks(prev => prev.map(t => t._id === editId ? updated : t));
       } else {
-        const created = await fetch("http://localhost:8080/tasks", {
+        const created = await fetch(`${apiUrl}/tasks`, { // Updated
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(task),
@@ -54,13 +57,13 @@ export default function Localdb() {
 
   // Delete task
   const deleteTask = async (id) => {
-    await fetch(`http://localhost:8080/tasks/${id}`, { method: "DELETE" });
+    await fetch(`${apiUrl}/tasks/${id}`, { method: "DELETE" }); // Updated
     setTasks(prev => prev.filter(t => t._id !== id));
   };
 
   // Toggle complete
   const toggleComplete = async (id, completed) => {
-    const updated = await fetch(`http://localhost:8080/tasks/${id}`, {
+    const updated = await fetch(`${apiUrl}/tasks/${id}`, { // Updated
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ completed: !completed }),
