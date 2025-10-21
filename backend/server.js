@@ -1,3 +1,4 @@
+require('dotenv').config(); // Load environment variables from .env file
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
@@ -5,7 +6,10 @@ const cors = require("cors");
 const app = express();
 
 // Middleware
-app.use(cors());
+// Use environment variable for CORS origin
+app.use(cors({
+  origin: process.env.FRONTEND_URL 
+}));
 app.use(express.json());
 
 // MongoDB Atlas connection
